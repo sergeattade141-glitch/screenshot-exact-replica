@@ -152,9 +152,7 @@ export function ChatView({ conversationId }: { conversationId: string }) {
     addMessage(conv.id, { role: "user", content: text });
     setDraft("");
     setAtBottom(true);
-    // read fresh state after insertion
-    const fresh = settingsStore.get() && conversations.find((c) => c.id === conv.id);
-    void generate({ ...(fresh ?? conv), messages: [...conv.messages, { id: "tmp", role: "user", content: text, createdAt: Date.now() }] });
+    void generate({ ...conv, messages: [...conv.messages, { id: "tmp", role: "user", content: text, createdAt: Date.now() }] });
   };
 
   const retry = (noticeId: string) => {
