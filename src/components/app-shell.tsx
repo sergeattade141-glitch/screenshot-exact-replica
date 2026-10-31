@@ -86,7 +86,7 @@ export function StatusBadge() {
   );
 }
 
-function ConversationItem({ conv, active, onNavigate }: { conv: Conversation; active: boolean; onNavigate?: () => void }) {
+function ConversationItem({ conv, active, onNavigate }: { conv: Conversation; active: boolean; onNavigate?: (() => void) | undefined }) {
   const navigate = useNavigate();
   const [editing, setEditing] = useState(false);
   const [title, setTitle] = useState(conv.title);
@@ -182,7 +182,7 @@ function ConversationItem({ conv, active, onNavigate }: { conv: Conversation; ac
   );
 }
 
-function SidebarBody({ onNavigate }: { onNavigate?: () => void }) {
+function SidebarBody({ onNavigate }: { onNavigate?: (() => void) | undefined }) {
   const conversations = useConversationList();
   const params = useParams({ strict: false }) as { id?: string };
 

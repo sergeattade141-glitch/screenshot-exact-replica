@@ -47,7 +47,7 @@ export function useDictation(onText: (text: string) => void) {
     rec.continuous = false;
     rec.onresult = (e) => {
       const text = Array.from(e.results)
-        .map((r) => r[0].transcript)
+        .map((r) => r[0]?.transcript ?? "")
         .join(" ");
       if (text.trim()) onText(text.trim());
     };

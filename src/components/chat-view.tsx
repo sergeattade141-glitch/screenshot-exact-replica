@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
 /** Conversations created from the home screen that still need a reply. */
 export const pendingReplies = new Set<string>();
 
-function MessageBubble({ msg, onRetry }: { msg: Message; onRetry?: () => void }) {
+function MessageBubble({ msg, onRetry }: { msg: Message; onRetry?: (() => void) | undefined }) {
   const [speaking, setSpeaking] = useState(false);
 
   const copy = async () => {

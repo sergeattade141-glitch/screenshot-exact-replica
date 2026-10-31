@@ -94,7 +94,7 @@ function EngineCard({ id }: { id: "online" | "local" }) {
 }
 
 function DeviceCheck() {
-  const [info, setInfo] = useState<{ ram?: number; webgpu: boolean; cores?: number } | null>(null);
+  const [info, setInfo] = useState<{ ram: number | undefined; webgpu: boolean; cores: number | undefined } | null>(null);
   useEffect(() => {
     const nav = navigator as Navigator & { deviceMemory?: number; gpu?: unknown };
     setInfo({ ram: nav.deviceMemory, webgpu: !!nav.gpu, cores: navigator.hardwareConcurrency });
