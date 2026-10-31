@@ -1,29 +1,18 @@
-# Welcome to your Lovable project
+# WIL WOL AI
 
-This project was built with [Lovable](https://lovable.dev).
+Assistant conversationnel personnel (texte et voix, en ligne ou local).
 
-## Build with Lovable
+## État : phase 1 (interface)
+- Fonctionne : accueil, suggestions, conversations (créer, renommer, supprimer, copier, réessayer, arrêter), historique stocké dans le navigateur, thème clair/sombre/système, mode en ligne/local, dictée via le navigateur (en ligne), lecture vocale avec choix de voix, vitesse et volume, effacement des données locales, pages confidentialité/conditions.
+- Pas encore : comptes (phase 2), moteur en ligne (phase 3), moteur local sans Ollama (phase 4), voix hors ligne (phase 5). Aucune réponse n'est simulée : un message explique l'absence de moteur.
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+## Développement
+```
+bun install
+bun run dev
+bunx vitest run
 ```
 
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+## Limites connues
+- La dictée du navigateur (Chrome/Edge) envoie l'audio à un service en ligne.
+- Le moteur local nécessitera un modèle léger adapté à 8 Go de RAM, téléchargé uniquement avec votre accord.
