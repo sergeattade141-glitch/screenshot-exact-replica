@@ -167,10 +167,10 @@ function SettingsPage() {
               </select>
             </Row>
             <Row label={`Vitesse : ${s.voiceRate.toFixed(1)}×`}>
-              <Slider className="w-40" min={0.5} max={2} step={0.1} value={[s.voiceRate]} onValueChange={([v]) => updateSettings({ voiceRate: v })} aria-label="Vitesse" />
+              <Slider className="w-40" min={0.5} max={2} step={0.1} value={[s.voiceRate]} onValueChange={([v]) => updateSettings({ voiceRate: v ?? 1 })} aria-label="Vitesse" />
             </Row>
             <Row label={`Volume : ${Math.round(s.voiceVolume * 100)} %`}>
-              <Slider className="w-40" min={0} max={1} step={0.05} value={[s.voiceVolume]} onValueChange={([v]) => updateSettings({ voiceVolume: v })} aria-label="Volume" />
+              <Slider className="w-40" min={0} max={1} step={0.05} value={[s.voiceVolume]} onValueChange={([v]) => updateSettings({ voiceVolume: v ?? 1 })} aria-label="Volume" />
             </Row>
             <Button variant="outline" size="sm" onClick={() => { if (!speak("Bonjour, je suis WIL WOL AI.")) toast.error("Synthèse vocale indisponible sur ce navigateur."); }}>
               <Volume2 className="size-4" /> Tester la voix
