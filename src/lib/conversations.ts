@@ -113,3 +113,16 @@ export function clearAllConversations() {
   ephemeral = [];
   conversationsStore.reset();
 }
+
+import { useMemo } from "react";
+import { useSettings } from "./settings";
+
+/** Hydration-safe sorted list of conversations. */
+export function useConversationList(): Conversation[] {
+  const raw = useConversations();
+  const { saveLocalHistory } = useSettings();
+  return useMemo(
+    () => [...(saveLocalHistory ? raw : ephemeral)].sort((a, b) => b.updatedAt - a.updatedAt),
+    [raw, saveLocalHistory],
+  );
+}
