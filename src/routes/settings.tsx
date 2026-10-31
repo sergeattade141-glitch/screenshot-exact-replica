@@ -172,6 +172,9 @@ function SettingsPage() {
             <Row label={`Volume : ${Math.round(s.voiceVolume * 100)} %`}>
               <Slider className="w-40" min={0} max={1} step={0.05} value={[s.voiceVolume]} onValueChange={([v]) => updateSettings({ voiceVolume: v ?? 1 })} aria-label="Volume" />
             </Row>
+            <Row label="Lire les réponses à voix haute" hint="Chaque réponse de l'assistant est lue automatiquement.">
+              <Switch checked={s.autoReadReplies} onCheckedChange={(autoReadReplies) => updateSettings({ autoReadReplies })} aria-label="Lire les réponses à voix haute" />
+            </Row>
             <Button variant="outline" size="sm" onClick={() => { if (!speak("Bonjour, je suis WIL WOL AI.")) toast.error("Synthèse vocale indisponible sur ce navigateur."); }}>
               <Volume2 className="size-4" /> Tester la voix
             </Button>

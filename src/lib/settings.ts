@@ -9,6 +9,7 @@ export interface Settings {
   voiceURI: string | null;
   voiceRate: number;
   voiceVolume: number;
+  autoReadReplies: boolean;
   memoryEnabled: boolean;
   saveLocalHistory: boolean;
 }
@@ -19,6 +20,7 @@ export const defaultSettings: Settings = {
   voiceURI: null,
   voiceRate: 1,
   voiceVolume: 1,
+  autoReadReplies: false,
   memoryEnabled: false,
   saveLocalHistory: true,
 };
