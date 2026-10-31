@@ -109,10 +109,16 @@ export function ChatView({ conversationId }: { conversationId: string }) {
       for await (const chunk of engine.generate({ messages: history, signal: controller.signal })) {
         text += chunk;
       }
-      if (text) addMessage(c.id, { role: "assistant", content: text });
+      if (text) {
+        addMessage(c.id, { role: "assistant", content: text });
+        if (settingsStore.get().autoReadReplies) speak(text);
+      }
     } catch (err) {
       if (controller.signal.aborted) {
-        if (text) addMessage(c.id, { role: "assistant", content: text });
+        if (text) {
+          addMessage(c.id, { role: "assistant", content: text });
+          if (settingsStore.get().autoReadReplies) speak(text);
+        }
       } else {
         const detail = err instanceof EngineUnavailableError ? err.message : "Une erreur est survenue pendant la génération.";
         addMessage(c.id, { role: "notice", content: detail, error: true });
