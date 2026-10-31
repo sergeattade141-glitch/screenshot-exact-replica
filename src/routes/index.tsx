@@ -57,7 +57,7 @@ function Home() {
             {suggestions.map(({ icon: Icon, text }) => (
               <button
                 key={text}
-                onClick={() => setDraft(text)}
+                onClick={() => { setDraft(text); document.getElementById("composer")?.focus(); }}
                 className="flex items-center gap-2 rounded-full border bg-card px-3.5 py-2 text-sm text-muted-foreground transition-colors hover:border-ring/40 hover:text-foreground"
               >
                 <Icon className="size-4 text-primary" />
